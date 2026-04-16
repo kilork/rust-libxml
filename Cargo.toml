@@ -32,12 +32,11 @@ pkg-config = "0.3.2"
 [target.'cfg(unix)'.build-dependencies]
 pkg-config = "0.3.2"
 
-[build-dependencies.bindgen]
-version = "0.72"
-features = [
-    "runtime",
-]
-default-features = false
+[target.'cfg(not(libxml_bindgen_backend = "static"))'.build-dependencies]
+bindgen = { version = "0.72", features = ["runtime"], default-features = false }
+
+[target.'cfg(libxml_bindgen_backend = "static")'.build-dependencies]
+bindgen = { version = "0.72", features = ["static"], default-features = false }
 
 [dev-dependencies]
 rayon = "1.0.0"

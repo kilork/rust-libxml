@@ -34,6 +34,14 @@ So you have to install CLang 9.0 or greater:
 - Debian / Ubuntu: `$ apt install libclang-dev`
 - Fedora: `$ dnf install clang-devel`
 
+#### Static Bindgen Backend (Optional)
+
+By default, the build uses a dynamically-linked libclang from your system. To use a statically-linked bindgen instead (useful with Alpine), build with:
+
+```
+RUSTFLAGS='--cfg libxml_bindgen_backend="static"' cargo build
+```
+
 ### MacOS
 [Community contributed](https://github.com/KWARC/rust-libxml/issues/88#issuecomment-890876895):
 
